@@ -78,3 +78,59 @@ it("works when you click on the left arrow to go back", function() {
   ).toBeInTheDocument();
 
 });
+
+it("removes left arrow on the first image", function (){
+  const { container } = render(
+    <Carousel
+      photos={TEST_IMAGES}
+      title="images for testing"
+    />
+  );
+
+  // expect the first image to show, but not the second
+  expect(
+    container.querySelector('img[alt="testing image 1"]')
+  ).toBeInTheDocument();
+  expect(
+    container.querySelector('img[alt="testing image 2"]')
+  ).not.toBeInTheDocument();
+
+  // expect the right arrow to show, but not the left
+  expect(
+    container.querySelector('.bi-arrow-right-circle')
+    ).toBeInTheDocument();
+  expect(
+    container.querySelector('.bi-arrow-left-circle')
+  ).not.toBeInTheDocument();
+});
+
+it("removes right arrow on the last image", function (){
+  const { container } = render(
+    <Carousel
+      photos={TEST_IMAGES}
+      title="images for testing"
+    />
+  );
+
+  // move forward in the carousel
+  const rightArrow = container.querySelector(".bi-arrow-right-circle");
+  fireEvent.click(rightArrow);
+  fireEvent.click(rightArrow);
+
+  // expect the third image to show, but not the second
+  expect(
+    container.querySelector('img[alt="testing image 3"]')
+  ).toBeInTheDocument();
+  expect(
+    container.querySelector('img[alt="testing image 2"]')
+  ).not.toBeInTheDocument();
+
+  // expect the left arrow to show, but not the right
+  expect(
+    container.querySelector('.bi-arrow-left-circle')
+    ).toBeInTheDocument();
+  expect(
+    container.querySelector('.bi-arrow-right-circle')
+  ).not.toBeInTheDocument();
+
+});
