@@ -96,12 +96,13 @@ it("removes left arrow on the first image", function (){
   ).not.toBeInTheDocument();
 
   // expect the right arrow to show, but not the left
+  // (left arrow in DOM but with hidden class)
   expect(
     container.querySelector('.bi-arrow-right-circle')
     ).toBeInTheDocument();
   expect(
     container.querySelector('.bi-arrow-left-circle')
-  ).not.toBeInTheDocument();
+  ).toHaveClass('hidden');
 });
 
 it("removes right arrow on the last image", function (){
@@ -126,11 +127,12 @@ it("removes right arrow on the last image", function (){
   ).not.toBeInTheDocument();
 
   // expect the left arrow to show, but not the right
+  // (still in DOM but with hidden class)
   expect(
     container.querySelector('.bi-arrow-left-circle')
     ).toBeInTheDocument();
   expect(
     container.querySelector('.bi-arrow-right-circle')
-  ).not.toBeInTheDocument();
+  ).toHaveClass('hidden');
 
 });

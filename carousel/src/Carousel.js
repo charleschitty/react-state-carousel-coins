@@ -33,46 +33,55 @@ import Card from "./Card";
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        {currCardIdx !== 0 && <i
-          className="bi bi-arrow-left-circle"
+        <i
+          className={
+            currCardIdx !== 0 ?
+            "bi bi-arrow-left-circle" :
+            "bi bi-arrow-left-circle hidden"
+          }
           onClick={goBackward}
-        />}
+        />
         <Card
           caption={currCard.caption}
           src={currCard.src}
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        {currCardIdx !== (total-1) && <i
-          className="bi bi-arrow-right-circle"
+        <i
+           className={
+            currCardIdx !== (total-1) ?
+            "bi bi-arrow-right-circle" :
+            "bi bi-arrow-right-circle hidden"
+          }
           onClick={goForward}
-        />}
+        />
       </div>
     </div>
   );
-}
-
-//   return (
+// Below code does not render the arrow element in the DOM, which creates a
+// jerky user experience.
+  //   return (
 //     <div className="Carousel">
 //       <h1>{title}</h1>
 //       <div className="Carousel-main">
-//         <i
+//         {currCardIdx !== 0 && <i
 //           className="bi bi-arrow-left-circle"
 //           onClick={goBackward}
-//         />
+//         />}
 //         <Card
 //           caption={currCard.caption}
 //           src={currCard.src}
 //           currNum={currCardIdx + 1}
 //           totalNum={total}
 //         />
-//         <i
+//         {currCardIdx !== (total-1) && <i
 //           className="bi bi-arrow-right-circle"
 //           onClick={goForward}
-//         />
+//         />}
 //       </div>
 //     </div>
 //   );
 // }
+}
 
 export default Carousel;
