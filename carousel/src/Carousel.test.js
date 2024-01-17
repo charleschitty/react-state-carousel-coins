@@ -125,7 +125,8 @@ it("removes right arrow on the last image", function (){
   expect(
     container.querySelector('img[alt="testing image 2"]')
   ).not.toBeInTheDocument();
-
+  // TODO: MAKE SURE NOT IN TESTS ARE WRITTEN CORRECTLY, will silently pass if
+  // you have a typo.
   // expect the left arrow to show, but not the right
   // (still in DOM but with hidden class)
   expect(
