@@ -4,14 +4,14 @@ import Card from "./Card";
 
 
 /** Carousel: displays images and arrows to navigate through them
- * 
+ *
  * Props:
  * - photos: array of {src, caption} objects
  * - title: string describing the collection of images
- * 
+ *
  * State:
  * - currCardIdx: integer for current card index
- * 
+ *
  * App --> Carousel --> Card
  */
  function Carousel({ photos, title }) {
@@ -21,8 +21,14 @@ import Card from "./Card";
   const total = photos.length;
 
   //Increments currCardIdx state by 1
+  //TODO: Add logic for nondefined indx numbers for the given array
   function goForward() {
     setCurrCardIdx(currCardIdx + 1);
+  }
+  //Decrements currCardIDX state by 1
+  //TODO: Add logic for nondefined indx numbers for the given array
+  function goBackward() {
+    setCurrCardIdx(currCardIdx - 1);
   }
 
   return (
@@ -31,7 +37,7 @@ import Card from "./Card";
       <div className="Carousel-main">
         <i
           className="bi bi-arrow-left-circle"
-          onClick={goForward}
+          onClick={goBackward}
         />
         <Card
           caption={currCard.caption}
